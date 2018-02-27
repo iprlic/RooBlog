@@ -3,6 +3,19 @@
     <h1>Create new article</h1>
   </div>
 </div>
+<% if @article.errors.any? %>
+  <div class="pure-g">
+    <div class="pure-u-1">
+      <h2>The following errors prevented the article from being created</h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
 <div class="pure-g">
   <div class="pure-u-1-2">
     <%= form_for @article, :html => {:class => 'pure-form pure-form-aligned'} do |f| %>
