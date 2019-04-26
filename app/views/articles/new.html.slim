@@ -1,0 +1,29 @@
+div class="pure-g"
+  div class="pure-u-1"
+    h1
+      | Create new article
+- if @article.errors.any?
+  div class="pure-g"
+    div class="pure-u-1"
+      h2
+        | The following errors prevented the article from being created
+      ul
+        - @article.errors.full_messages.each do |msg|
+          li
+            = msg
+
+div class="pure-g"
+  div class="pure-u-1-2"
+    = simple_form_for @article, :html => {:class => 'pure-form pure-form-aligned'} do |f|
+      fieldset
+        div class="pure-control-group"
+          = f.label :title
+          = f.text_field :title
+        div class="pure-control-group"
+          = f.label :description
+          = f.text_area :description
+        div class="pure-controls"
+          = f.submit 'Create article', :class => 'pure-button pure-button-primary'
+
+
+
